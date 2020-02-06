@@ -77,6 +77,10 @@ def test_negation():
     assert (-Money('1.0', 'USD')).amount == -1
 
 
+def test_absolute():
+    assert abs(Money('1.0', 'USD')).amount == 1
+
+
 def test_repr():
     money = Money(10, 'USD')
     assert repr(money) == "Money('10', 'USD')"

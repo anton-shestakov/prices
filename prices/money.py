@@ -29,6 +29,9 @@ class Money:
     def __neg__(self):
         return Money(-self.amount, self.currency)
 
+    def __abs__(self):
+        return Money(abs(self.amount), self.currency)
+
     def __lt__(self, other: 'Money') -> bool:
         if isinstance(other, Money):
             if self.currency != other.currency:
@@ -113,8 +116,6 @@ class Money:
         of the currency if it's known and to default (two decimal places)
         otherwise.
         """
-        if rounding is None:
-            rounding = ROUND_HALF_UP
         if exp is None:
             digits = get_currency_precision(self.currency)
             exp = Decimal('0.1') ** digits
