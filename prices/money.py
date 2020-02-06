@@ -26,6 +26,9 @@ class Money:
     def __repr__(self) -> str:
         return 'Money(%r, %r)' % (str(self.amount), self.currency)
 
+    def __neg__(self):
+        return Money(-self.amount, self.currency)
+
     def __lt__(self, other: 'Money') -> bool:
         if isinstance(other, Money):
             if self.currency != other.currency:
